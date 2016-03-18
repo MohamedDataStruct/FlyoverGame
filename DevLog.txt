@@ -1,0 +1,6 @@
+A log file for notes from developers Mose and Mohamed:
+
+March 18 2016 -----------------Mose
+Finaly got all the SFML files in order in the repository.
+We have yet to test officially to see how using github is
+going to work with colaborative coding.
