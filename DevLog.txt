@@ -4,3 +4,14 @@ March 18 2016 -----------------Mose
 Finaly got all the SFML files in order in the repository.
 We have yet to test officially to see how using github is
 going to work with colaborative coding.
+
+March 18 2016 (PM) ------------Mose
+Developing screens like a main menu and a screen for each
+Level is going to prove more difficult than I had originaly
+thought. Moving from one screen to another can be handled
+either by the window or by the screen itself, but each
+presents a disadvantage. If the window does it, it has
+to poll the screen somehow to find out if it should switch
+and to what it should switch. If the screen handles it,
+there has to be some way for the baton from the window
+to get passed to the next screen...
