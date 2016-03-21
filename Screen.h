@@ -7,9 +7,9 @@
 class Screen {
 
 public:
-	virtual Screen* update(sf::RenderWindow) = 0;
+	virtual void open(sf::RenderWindow) = 0;
 	virtual void handleEvent(sf::Event) = 0;
-	virtual string getState() = 0;
-}
+	virtual std::string getState() = 0;
+};
 
 #endif

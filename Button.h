@@ -13,7 +13,7 @@ public:
 	sf::Shape* getShape();
 
 	bool pointOnBox(int,int);
-}
+};
 
 
 
