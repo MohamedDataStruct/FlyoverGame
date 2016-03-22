@@ -15,6 +15,7 @@ Button::Button(int xPos, int yPos, int w, int h, sf::Color color) {
 	width = w;
 	height = h;
 	shape = sf::RectangleShape(sf::Vector2f(w,h));
+	shape.setPosition(x,y);
 	shape.setFillColor(color);
 }
 

@@ -8,7 +8,7 @@
 class MainMenu {
 	Button continueButton;
 	sf::Text title;
-	sf::Font titelFont;
+	sf::Font titleFont;
 public:
 	MainMenu();
 	void open(sf::RenderWindow*);

@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(500, 600), "Flyover Game", sf::Style::Titlebar | sf::Style::Close);
 
 	MainMenu menu = MainMenu();
 
