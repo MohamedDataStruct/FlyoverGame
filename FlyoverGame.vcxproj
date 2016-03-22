@@ -63,11 +63,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleStage.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleStage.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Screen.h" />

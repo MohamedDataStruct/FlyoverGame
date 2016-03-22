@@ -1,5 +1,6 @@
 #include "MainMenu.h"
 #include "Button.h"
+#include "BattleStage.h"
 #include <iostream>
 
 MainMenu::MainMenu() { //initializes main menu screen
@@ -28,9 +29,9 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 			if (event.type == sf::Event::MouseButtonPressed) {
 				std::cout << event.mouseButton.x << " " << event.mouseButton.y << " " << testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y);
 				//check buttons
-				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple toggle button
-					if (testButton.getShape()->getFillColor().toInteger() == sf::Color::Red.toInteger()) testButton.getShape()->setFillColor(sf::Color::Green);
-					else testButton.getShape()->setFillColor(sf::Color::Red);
+				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple test level button
+					BattleStage temp = BattleStage();
+					temp.open(window);
 				}
 			}
 			//window closed
