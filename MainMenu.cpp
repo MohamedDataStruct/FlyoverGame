@@ -2,7 +2,7 @@
 #include "Button.h"
 #include <iostream>
 
-MainMenu::MainMenu() {
+MainMenu::MainMenu() { //initializes main menu screen
 	titleFont = sf::Font();
 
 	title = sf::Text();
@@ -11,14 +11,16 @@ MainMenu::MainMenu() {
 	title.setColor(sf::Color::Cyan);
 }
 
-void MainMenu::open(sf::RenderWindow* window) {
-	if (!titleFont.loadFromFile("arial.ttf")) return;
+void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goes here
+	//prepare font
+	if (!titleFont.loadFromFile("arial.ttf")) return; //the game will not start if the font doesn't load
 	title.setFont(titleFont);
 	
+	//position button and title using the window size
 	Button testButton = Button(window->getView().getSize().x/2 - 50,150,100,50,sf::Color::Red);
 	title.setPosition(window->getView().getSize().x/2 - (title.getLocalBounds().width/2), 10);
 
-	while (window->isOpen())
+	while (window->isOpen()) //function loop
     {
         sf::Event event;
         while (window->pollEvent(event))
@@ -26,14 +28,16 @@ void MainMenu::open(sf::RenderWindow* window) {
 			if (event.type == sf::Event::MouseButtonPressed) {
 				std::cout << event.mouseButton.x << " " << event.mouseButton.y << " " << testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y);
 				//check buttons
-				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) {
+				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple toggle button
 					if (testButton.getShape()->getFillColor().toInteger() == sf::Color::Red.toInteger()) testButton.getShape()->setFillColor(sf::Color::Green);
 					else testButton.getShape()->setFillColor(sf::Color::Red);
 				}
 			}
+			//window closed
 			if (event.type == sf::Event::Closed) window->close();
         }
 
+		//draw sequence
         window->clear();
 		window->draw(*testButton.getShape());
 		window->draw(title);
