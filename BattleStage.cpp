@@ -26,6 +26,9 @@ void BattleStage::open(sf::RenderWindow* window) {
 	rightSq.setPosition(100,550);
 	zSq.setPosition(0,500);
 	xSq.setPosition(100,500);
+	//list drawables
+	drawables = std::list<sf::Shape*>();
+	drawables.push_front(exitB.getShape());
 
 	//bulk loop
 	while (!done) {
@@ -40,17 +43,28 @@ void BattleStage::open(sf::RenderWindow* window) {
 				if (event.mouseButton.button == sf::Mouse::Button::Left &&
 					exitB.pointOnBox(event.mouseButton.x, event.mouseButton.y)) done = true;
 			}
+			if (event.type == sf::Event::KeyPressed) {
+				if (event.key.code == sf::Keyboard::Up) drawables.push_back(&upSq);
+				if (event.key.code == sf::Keyboard::Down) drawables.push_back(&downSq);
+				if (event.key.code == sf::Keyboard::Left) drawables.push_back(&leftSq);
+				if (event.key.code == sf::Keyboard::Right) drawables.push_back(&rightSq);
+				if (event.key.code == sf::Keyboard::Z) drawables.push_back(&zSq);
+				if (event.key.code == sf::Keyboard::X) drawables.push_back(&xSq);
+			}
+			if (event.type == sf::Event::KeyReleased) {
+				if (event.key.code == sf::Keyboard::Up) drawables.remove(&upSq);
+				if (event.key.code == sf::Keyboard::Down) drawables.remove(&downSq);
+				if (event.key.code == sf::Keyboard::Left) drawables.remove(&leftSq);
+				if (event.key.code == sf::Keyboard::Right) drawables.remove(&rightSq);
+				if (event.key.code == sf::Keyboard::Z) drawables.remove(&zSq);
+				if (event.key.code == sf::Keyboard::X) drawables.remove(&xSq);
+			}
 		}
 
 		//draw sequence
 		window->clear();
-		window->draw(*exitB.getShape());
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up)) window->draw(upSq);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down)) window->draw(downSq);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left)) window->draw(leftSq);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right)) window->draw(rightSq);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Z)) window->draw(zSq);
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::X)) window->draw(xSq);
+		for (std::list<sf::Shape*>::iterator it = drawables.begin(); it != drawables.end(); it++)
+			window->draw(**it);
 		window->display();
 	}
 }

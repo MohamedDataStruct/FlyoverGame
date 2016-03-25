@@ -27,7 +27,6 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
         while (window->pollEvent(event))
         {
 			if (event.type == sf::Event::MouseButtonPressed) {
-				std::cout << event.mouseButton.x << " " << event.mouseButton.y << " " << testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y);
 				//check buttons
 				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple test level button
 					BattleStage temp = BattleStage();
