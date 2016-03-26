@@ -1,10 +1,13 @@
 #include "BattleStage.h"
 #include "Button.h"
+#include "player.h"
 
 void BattleStage::open(sf::RenderWindow* window) {
 	//prepare level
 	bool done = false;
 	Button exitB = Button(0,0,50,50,sf::Color::Color(64,64,64,255));
+	player p1;
+	p1.setup();
 	// keyboard display parts
 	sf::RectangleShape upSq = sf::RectangleShape(sf::Vector2f(50,50));
 	sf::RectangleShape downSq = sf::RectangleShape(sf::Vector2f(50,50));
@@ -32,7 +35,8 @@ void BattleStage::open(sf::RenderWindow* window) {
 
 	//bulk loop
 	while (!done) {
-
+		p1.input();
+		p1.logic();
 		sf::Event event;
 		while(window->pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {
@@ -44,19 +48,19 @@ void BattleStage::open(sf::RenderWindow* window) {
 					exitB.pointOnBox(event.mouseButton.x, event.mouseButton.y)) done = true;
 			}
 			if (event.type == sf::Event::KeyPressed) {
-				if (event.key.code == sf::Keyboard::Up) drawables.push_back(&upSq);
-				if (event.key.code == sf::Keyboard::Down) drawables.push_back(&downSq);
-				if (event.key.code == sf::Keyboard::Left) drawables.push_back(&leftSq);
-				if (event.key.code == sf::Keyboard::Right) drawables.push_back(&rightSq);
-				if (event.key.code == sf::Keyboard::Z) drawables.push_back(&zSq);
+				if (event.key.code == sf::Keyboard::W) drawables.push_back(&upSq);
+				if (event.key.code == sf::Keyboard::S) drawables.push_back(&downSq);
+				if (event.key.code == sf::Keyboard::A) drawables.push_back(&leftSq);
+				if (event.key.code == sf::Keyboard::D) drawables.push_back(&rightSq);
+				if (event.key.code == sf::Keyboard::Q) drawables.push_back(&zSq);
 				if (event.key.code == sf::Keyboard::X) drawables.push_back(&xSq);
 			}
 			if (event.type == sf::Event::KeyReleased) {
-				if (event.key.code == sf::Keyboard::Up) drawables.remove(&upSq);
-				if (event.key.code == sf::Keyboard::Down) drawables.remove(&downSq);
-				if (event.key.code == sf::Keyboard::Left) drawables.remove(&leftSq);
-				if (event.key.code == sf::Keyboard::Right) drawables.remove(&rightSq);
-				if (event.key.code == sf::Keyboard::Z) drawables.remove(&zSq);
+				if (event.key.code == sf::Keyboard::W) drawables.remove(&upSq);
+				if (event.key.code == sf::Keyboard::S) drawables.remove(&downSq);
+				if (event.key.code == sf::Keyboard::A) drawables.remove(&leftSq);
+				if (event.key.code == sf::Keyboard::D) drawables.remove(&rightSq);
+				if (event.key.code == sf::Keyboard::Q) drawables.remove(&zSq);
 				if (event.key.code == sf::Keyboard::X) drawables.remove(&xSq);
 			}
 		}
@@ -65,6 +69,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 		window->clear();
 		for (std::list<sf::Shape*>::iterator it = drawables.begin(); it != drawables.end(); it++)
 			window->draw(**it);
+		p1.Draw();
 		window->display();
 	}
 }

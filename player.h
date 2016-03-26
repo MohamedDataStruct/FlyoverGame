@@ -3,8 +3,8 @@ class player
 {
 private: 
 	
-	const int width = 40;
-	const int height = 40;
+	static const int width = 40;
+	static const int height = 40;
 	int x, y, score;
 	enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
 	Direction dir;

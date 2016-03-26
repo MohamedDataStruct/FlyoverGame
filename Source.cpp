@@ -4,7 +4,7 @@ using namespace std;
 
 
 
-int main() {
+int mainx() {
 	player ob;
 	ob.setup();
 	while (!ob.gameOver)
@@ -13,6 +13,6 @@ int main() {
 		ob.input();
 		ob.logic();
 	}
-
+	return 0;
 	
 }
