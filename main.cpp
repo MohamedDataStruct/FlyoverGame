@@ -8,6 +8,7 @@ int main()
 
 	MainMenu menu = MainMenu();
 
+	window.setFramerateLimit(60);
 	menu.open(& window);
 
     return 0;
