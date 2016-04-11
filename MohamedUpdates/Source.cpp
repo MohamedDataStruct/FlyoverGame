@@ -6,7 +6,7 @@ struct Bullet
 {
 	float x;
 	float y;
-	bool dead; // a variable that is when set to true 
+	bool dead; // a variable that is when set to true kills the node.
 	Bullet *next;
 	Bullet *previous;
 };
