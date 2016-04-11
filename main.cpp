@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "MainMenu.h"
+#include "player.h"
 
 int main()
 { //simply create the window and start the main menu
@@ -7,6 +8,7 @@ int main()
 
 	MainMenu menu = MainMenu();
 
+	window.setFramerateLimit(60);
 	menu.open(& window);
 
     return 0;
