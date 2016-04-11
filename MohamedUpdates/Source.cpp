@@ -31,8 +31,8 @@ Bullet *newbullet(float x, float y)
 	{
 		lastBullet->next = new Bullet; // pointing to the new node which is not known yet.
 		lastBullet->next->previous = lastBullet; // this might be confusing here but it's just the unknown bullet node
-												 // pointing to the previous bullet which is currently "LastBullet" and
-												 // in the next step we will shift it to the end of the list again
+							 // pointing to the previous bullet which is currently "LastBullet" and
+							 // in the next step we will shift it to the end of the list again
 
 		lastBullet = lastBullet->next;           // shifting to the end of the list
 		lastBullet->next = NULL;                 // making next pointing to nothing again. 
