@@ -17,6 +17,11 @@ public:
 	void input(Direction);
 	void setVelocity(int,int);
 	void logic();
+
+	int getX();
+	int getY();
+	int getXVel();
+	int getYVel();
 	sf::RectangleShape* getSprite();
 };
 

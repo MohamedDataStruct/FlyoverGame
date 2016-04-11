@@ -1,15 +1,8 @@
 #include<iostream>
+#include <SFML/Graphics.hpp>
+#include "Bullet.h"
 
 using namespace std;
-
-struct Bullet
-{
-	float x;
-	float y;
-	bool dead; // a variable that is when set to true
-	Bullet *next;
-	Bullet *previous;
-};
 
 Bullet *firstBullet = NULL;
 Bullet *lastBullet = NULL;
@@ -18,7 +11,7 @@ Bullet *lastBullet = NULL;
 
 // the updating function :
 
-Bullet *newbullet(float x, float y)
+Bullet* newbullet(float x, float y)
 {
 	if (firstBullet == NULL) // in case we are making the first bullet/Node.
 	{
@@ -41,6 +34,9 @@ Bullet *newbullet(float x, float y)
 	lastBullet->x = x; // making x data portion of struct equal to the parameter.
 	lastBullet->y = y; // same goes for y
 
+	lastBullet->sprite = sf::RectangleShape(sf::Vector2f(5,5));
+	lastBullet->sprite.setFillColor(sf::Color(255,0,0,255));
+
 	lastBullet->dead = false; // we set it to true only when we want the bullet destroyed.
 
 	return lastBullet; // notice that we are returning the pointer to the new bullet.
@@ -53,7 +49,8 @@ void BulletLogic()
 
 	while (currentBullet != NULL)
 	{
-		currentBullet->y -= 1; // by the way, you can change the speed of the bullet by changing this number to something bigger.
+		currentBullet->y -= 5; // by the way, you can change the speed of the bullet by changing this number to something bigger.
+        currentBullet->sprite.setPosition(currentBullet->x,currentBullet->y);
 
 		if (currentBullet < 0)			// killing the bullet if it goes out the screen.
 			currentBullet->dead = true;
@@ -63,7 +60,7 @@ void BulletLogic()
 
 }
 
-void RenderAndDeleteBullet()
+void RenderAndDeleteBullet(sf::RenderWindow* window)
 {
 	Bullet *currentBullet = firstBullet; // we'll need this again.
 	Bullet *KilledBullet = NULL;		 // this is used when deleting a bullet from the list.
@@ -100,8 +97,7 @@ void RenderAndDeleteBullet()
 		}
 		else
 		{
-			// MOSE ENTER YOUR RENDERING CODE HERE **********************************************
-			// USING SFML LIBRARY.***************************************************************
+			window->draw(currentBullet->sprite);
 
 			currentBullet = currentBullet->next; // so we won't stay in the loop forever.
 		}

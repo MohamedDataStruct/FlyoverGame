@@ -84,7 +84,15 @@ void player::setVelocity(int xV, int yV)
 		//game over, shooting logic goes here.
 	}
 
-	sf::RectangleShape* player::getSprite() { return &sprite; }
+sf::RectangleShape* player::getSprite() { return &sprite; }
+
+int player::getX() { return x; }
+
+int player::getY() { return y; }
+
+int player::getXVel() { return yVel; }
+
+int player::getYVel() { return xVel; }
 
 
 
