@@ -3,7 +3,7 @@
 
 #include "Screen.h"
 #include "Button.h"
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class MainMenu {
 	Button continueButton;
