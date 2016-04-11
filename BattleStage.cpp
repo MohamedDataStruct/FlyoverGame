@@ -4,7 +4,7 @@
 void BattleStage::open(sf::RenderWindow* window) {
 	//prepare level
 	bool done = false;
-	Button exitB = Button(0,0,50,50,sf::Color::Color(64,64,64,255));
+	Button exitB = Button(0,0,50,50,sf::Color(64,64,64,255));
 	// keyboard display parts
 	sf::RectangleShape upSq = sf::RectangleShape(sf::Vector2f(50,50));
 	sf::RectangleShape downSq = sf::RectangleShape(sf::Vector2f(50,50));
@@ -40,7 +40,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 				window->close(); //check for closed window
 			}
 			if (event.type == sf::Event::MouseButtonPressed) { //if the exit button is clicked, prepare to back out of screen
-				if (event.mouseButton.button == sf::Mouse::Button::Left &&
+				if (event.mouseButton.button == sf::Mouse::Left &&
 					exitB.pointOnBox(event.mouseButton.x, event.mouseButton.y)) done = true;
 			}
 			if (event.type == sf::Event::KeyPressed) {

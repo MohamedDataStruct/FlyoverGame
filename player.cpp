@@ -1,12 +1,12 @@
-#include<iostream>
-#include<conio.h>
+#include <iostream>
+//#include <conio.h>
 #include "player.h"
 #pragma once
 using namespace std;
 
 void player::setup()
 {
-	
+
 
 		gameOver = false;
 		dir = STOP;
@@ -16,6 +16,7 @@ void player::setup()
 
 }
 
+/*
 void player::Draw()
 {
 	system("cls");
@@ -47,9 +48,9 @@ void player::Draw()
 		cout << "#";
 	cout << endl;
 
-}
+}*/
 
-
+/*
 void player::input()
 {
 
@@ -73,7 +74,7 @@ void player::input()
 		}
 	}
 }
-
+*/
 	void player::logic() {
 		switch (dir)
 		{

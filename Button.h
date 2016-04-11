@@ -1,7 +1,7 @@
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class Button {
 	int x, y, width, height;
