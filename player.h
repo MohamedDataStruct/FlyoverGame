@@ -8,7 +8,8 @@ private:
 	static const int width = 40;
 	static const int height = 40;
 	int x, y, xVel, yVel, score;
-	sf::RectangleShape sprite;
+	sf::Sprite sprite;
+	sf::Texture texture;
 public:
 	enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
 	bool gameOver;
@@ -22,6 +23,6 @@ public:
 	int getY();
 	int getXVel();
 	int getYVel();
-	sf::RectangleShape* getSprite();
+	sf::Sprite* getSprite();
 };
 

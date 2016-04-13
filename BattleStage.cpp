@@ -30,7 +30,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 	zSq.setPosition(0,500);
 	xSq.setPosition(100,500);
 	//list drawables
-	drawables = std::list<sf::Shape*>();
+	drawables = std::list<sf::Drawable*>();
 	drawables.push_front(exitB.getShape());
 	drawables.push_front(p1.getSprite());
 
@@ -65,9 +65,10 @@ void BattleStage::open(sf::RenderWindow* window) {
 					drawables.push_back(&rightSq);
 					p1.input(player::RIGHT);
 				}
-				if (event.key.code == sf::Keyboard::Q) {
+				if (event.key.code == sf::Keyboard::Space) {
                     drawables.push_back(&zSq);
                     newbullet(p1.getX(),p1.getY());
+                    newbullet(p1.getX()+35,p1.getY());
                 }
 				if (event.key.code == sf::Keyboard::X) drawables.push_back(&xSq);
 			}
@@ -88,14 +89,14 @@ void BattleStage::open(sf::RenderWindow* window) {
 					drawables.remove(&rightSq);
 					p1.input(player::STOP);
 				}
-				if (event.key.code == sf::Keyboard::Q) drawables.remove(&zSq);
+				if (event.key.code == sf::Keyboard::Space) drawables.remove(&zSq);
 				if (event.key.code == sf::Keyboard::X) drawables.remove(&xSq);
 			}
 		}
 
 		//draw sequence
 		window->clear();
-		for (std::list<sf::Shape*>::iterator it = drawables.begin(); it != drawables.end(); it++)
+		for (std::list<sf::Drawable*>::iterator it = drawables.begin(); it != drawables.end(); it++)
 			window->draw(**it);
         RenderAndDeleteBullet(window);
 		window->display();

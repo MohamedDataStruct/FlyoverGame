@@ -6,7 +6,7 @@
 
 class BattleStage {
 	//some member needed to store obstacles and enemies
-	std::list<sf::Shape*> drawables;
+	std::list<sf::Drawable*> drawables;
 public:
 	void open(sf::RenderWindow*);
 };
