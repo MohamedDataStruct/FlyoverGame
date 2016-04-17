@@ -2,7 +2,7 @@
 #define SCREEN_H
 
 #include <iostream>
-#include <SFML\Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class Screen {
 

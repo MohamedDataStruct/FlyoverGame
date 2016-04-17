@@ -1,6 +1,5 @@
 #include<iostream>
-#include<conio.h>
-#include<SFML\System.hpp>
+#include<SFML/System.hpp>
 #include "player.h"
 #pragma once
 using namespace std;
@@ -14,7 +13,7 @@ player::player()
 		yVel = 0;
 		score = 0;
 		sprite = sf::RectangleShape(sf::Vector2f(width,height));
-		sprite.setFillColor(sf::Color::Color(155,155,100,255));
+		sprite.setFillColor(sf::Color(155,155,100,255));
 }
 
 void player::Draw()
@@ -84,7 +83,15 @@ void player::setVelocity(int xV, int yV)
 		//game over, shooting logic goes here.
 	}
 
-	sf::RectangleShape* player::getSprite() { return &sprite; }
+sf::RectangleShape* player::getSprite() { return &sprite; }
+
+int player::getX() { return x; }
+
+int player::getY() { return y; }
+
+int player::getXVel() { return yVel; }
+
+int player::getYVel() { return xVel; }
 
 
 
