@@ -23,6 +23,7 @@ public:
 	int getY();
 	int getXVel();
 	int getYVel();
+
 	sf::Sprite* getSprite();
 };
 

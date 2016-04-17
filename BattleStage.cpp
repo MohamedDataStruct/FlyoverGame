@@ -7,6 +7,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 	//prepare level
 	bool done = false;
 	Button exitB = Button(0,0,50,50,sf::Color(64,64,64,255));
+
 	player p1 = player();
 	// keyboard display parts
 	sf::RectangleShape upSq = sf::RectangleShape(sf::Vector2f(50,50));
@@ -38,6 +39,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 	while (!done) {
 		p1.logic();
 		BulletLogic();
+
 		sf::Event event;
 		while(window->pollEvent(event)) {
 			if (event.type == sf::Event::Closed) {

@@ -1,5 +1,4 @@
 #include<iostream>
-//#include<conio.h>
 #include<SFML/System.hpp>
 #include<SFML/Graphics.hpp>
 #include "player.h"
@@ -14,6 +13,7 @@ player::player()
 		xVel = 0;
 		yVel = 0;
 		score = 0;
+
 		texture = sf::Texture();
 		texture.loadFromFile("Sprites/player.png");
 		sprite = sf::Sprite();

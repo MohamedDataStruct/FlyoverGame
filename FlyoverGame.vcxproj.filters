@@ -27,9 +27,12 @@
     <ClCompile Include="BattleStage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Bullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+>>>>>>> b3b9372cc100b07a0fb8ac5766188143adf92c85
     <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -47,9 +50,12 @@
     <ClInclude Include="BattleStage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Bullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+=======
+>>>>>>> b3b9372cc100b07a0fb8ac5766188143adf92c85
     <ClInclude Include="player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
