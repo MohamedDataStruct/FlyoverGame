@@ -15,6 +15,7 @@ Enemy *firstEnemy = NULL;
 Enemy *lastEnemy = NULL;
 
 
+void Xmotion(int);
 
 Enemy *newEnemy(float x, float y)
 {
@@ -53,9 +54,7 @@ void EnemyLogic()
 	{
 		currentEnemy->y += .5; // by the way, you can change the speed of the bullet by changing this number to something bigger or smaller.
 
-			}
-
-
+		
 		if (currentEnemy < 0)			// killing the bullet if it goes out the screen.
 			currentEnemy->dead = true;
 		
