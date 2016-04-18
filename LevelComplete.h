@@ -9,6 +9,7 @@ class LevelComplete {
 	sf::Text message;
 	sf::Font font;
 	std::list<sf::Drawable*> drawables;
+	int anim;
 public:
     LevelComplete();
 	void open(sf::RenderWindow*);

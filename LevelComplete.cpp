@@ -1,4 +1,5 @@
 #include "LevelComplete.h"
+#include <math.h>
 
 LevelComplete::LevelComplete() {
 	font = sf::Font();
@@ -11,6 +12,8 @@ LevelComplete::LevelComplete() {
 	drawables = std::list<sf::Drawable*>();
 	//drawables.push_front(message);
 	drawables.push_front(continueButton.getShape());
+
+	anim = 0;
 }
 
 void LevelComplete::open(sf::RenderWindow* window) {
@@ -34,6 +37,13 @@ void LevelComplete::open(sf::RenderWindow* window) {
 			//window closed
 			if (event.type == sf::Event::Closed) window->close();
         }
+
+        //animation
+        int x = anim - 60;
+        message.setPosition(window->getView().getSize().x/2 - (message.getLocalBounds().width/2)
+                            +((x < 0) ? 50.0*sin(x/4.0) : 0),
+                            10);
+        anim++;
 
 		//draw sequence
         window->clear();
