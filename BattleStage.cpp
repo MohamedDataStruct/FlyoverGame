@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "player.h"
 #include "Bullet.h"
+#include "Enemies.h"
 
 void BattleStage::open(sf::RenderWindow* window) {
 	//prepare level
@@ -39,6 +40,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 	while (!done) {
 		p1.logic();
 		BulletLogic();
+		EnemyLogic();
 
 		sf::Event event;
 		while(window->pollEvent(event)) {
@@ -72,7 +74,11 @@ void BattleStage::open(sf::RenderWindow* window) {
                     newbullet(p1.getX(),p1.getY());
                     newbullet(p1.getX()+35,p1.getY());
                 }
-				if (event.key.code == sf::Keyboard::X) drawables.push_back(&xSq);
+				if (event.key.code == sf::Keyboard::X) {
+					drawables.push_back(&xSq);
+					//temporary for enemy testing:
+					newEnemy(rand()%460,0);
+				}
 			}
 			if (event.type == sf::Event::KeyReleased) {
 				if (event.key.code == sf::Keyboard::Up) {
@@ -101,6 +107,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 		for (std::list<sf::Drawable*>::iterator it = drawables.begin(); it != drawables.end(); it++)
 			window->draw(**it);
         RenderAndDeleteBullet(window);
+		RenderAndDeleteEnemy(window);
 		window->display();
 	}
 	DeleteAllBullets();

@@ -1,21 +1,9 @@
-#include<iostream>
-
-using namespace std;
-
-struct Enemy
-{
-	float x;
-	float y;
-	bool dead; // a variable that is when set to true it kills the node.
-	Enemy *next;
-	Enemy *previous;
-};
+#include "Enemies.h"
+#include <SFML/Graphics.hpp>
 
 Enemy *firstEnemy = NULL;
 Enemy *lastEnemy = NULL;
 
-
-void Xmotion(int);
 
 Enemy *newEnemy(float x, float y)
 {
@@ -52,10 +40,10 @@ void EnemyLogic()
 	
 	while (currentEnemy != NULL) 
 	{
-		currentEnemy->y += .5; // by the way, you can change the speed of the bullet by changing this number to something bigger or smaller.
-
+		currentEnemy->y += 5; // by the way, you can change the speed of the bullet by changing this number to something bigger or smaller.
+		Xmotion(50,true,currentEnemy->x);
 		
-		if (currentEnemy < 0)			// killing the bullet if it goes out the screen.
+		if (currentEnemy->y > 600)			// killing the bullet if it goes out the screen.
 			currentEnemy->dead = true;
 		
 		currentEnemy = currentEnemy->next; // moving to the next node.
@@ -63,7 +51,7 @@ void EnemyLogic()
 
 }
 
-void RenderAndDeleteEnemy()
+void RenderAndDeleteEnemy(sf::RenderWindow* window)
 {
 	Enemy *currentEnemy = firstEnemy; // we'll need this again.
 	Enemy *KilledEnemy = NULL;		 // this is used when deleting a bullet from the list.
@@ -100,8 +88,10 @@ void RenderAndDeleteEnemy()
 		}
 		else
 		{
-			// MOSE ENTER YOUR RENDERING CODE HERE **********************************************
-			// USING SFML LIBRARY.***************************************************************
+			sf::RectangleShape temp = sf::RectangleShape(sf::Vector2f(40,40));
+			temp.setFillColor(sf::Color(128,0,0,255));
+			temp.setPosition(currentEnemy->x,currentEnemy->y);
+			window->draw(temp);
 
 			currentEnemy = currentEnemy->next; // so we won't stay in the loop forever.
 		}
@@ -143,7 +133,7 @@ void Xmotion(int Xrand, bool j, int i)
 
 
 
-					} while (i <= Xrand)
+					} while (i <= Xrand);
 
 				}
 
@@ -153,15 +143,16 @@ void Xmotion(int Xrand, bool j, int i)
 						i -= .5;
 
 
-					} while (i >= Xrand)
+					} while (i >= Xrand);
 
 
 				}
 
 				Xrand = rand() % 500;
-				Xmotion(Xrand);
+				//Xmotion(Xrand); //produces endless loop
 
 			}
+}
 
 
 
