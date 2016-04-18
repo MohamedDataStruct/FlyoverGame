@@ -2,6 +2,7 @@
 #include "Button.h"
 #include "BattleStage.h"
 #include "LevelComplete.h"
+#include "Bullet.h"
 #include <iostream>
 
 MainMenu::MainMenu() { //initializes main menu screen
@@ -30,6 +31,7 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 			if (event.type == sf::Event::MouseButtonPressed) {
 				//check buttons
 				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple test level button
+					DeleteAllBullets();
 					BattleStage temp = BattleStage();
 					temp.open(window);
 					LevelComplete comp = LevelComplete();
@@ -40,8 +42,11 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 			if (event.type == sf::Event::Closed) window->close();
         }
 
+        newbullet(rand()%495,600);
+        BulletLogic();
 		//draw sequence
         window->clear();
+        RenderAndDeleteBullet(window);
 		window->draw(*testButton.getShape());
 		window->draw(title);
         window->display();
