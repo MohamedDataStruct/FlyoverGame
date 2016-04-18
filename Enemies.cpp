@@ -52,41 +52,7 @@ void EnemyLogic()
 	while (currentEnemy != NULL) 
 	{
 		currentEnemy->y += .5; // by the way, you can change the speed of the bullet by changing this number to something bigger or smaller.
-		void Xmotion(int Xrand)
 
-		{
-
-			while (currentEnemy->dead = false)
-			{
-				Xrand = rand() % 500;
-
-				if (currentEnemy->x < Xrand)
-				{
-					do
-					{
-						currentEnemy->x += .5;
-
-
-
-					} while (currentEnemy->x <= Xrand)
-
-				}
-
-				else
-				{
-					do {
-						currentEnemy->x -= .5;
-
-
-					} while (currentEnemy->x >= Xrand)
-
-
-				}
-
-				Xrand = rand() % 500;
-				Xmotion(Xrand);
-
-			}
 			}
 
 
@@ -161,6 +127,42 @@ void DeleteAllEnemys()
 
 
 
+void Xmotion(int Xrand, bool j, int i)
+
+		{	
+			Xrand = rand() % 500;
+
+			while (j = false)
+			{
+			
+
+				if (i < Xrand)
+				{
+					do
+					{
+						i += .5;
+
+
+
+					} while (i <= Xrand)
+
+				}
+
+				else
+				{
+					do {
+						i -= .5;
+
+
+					} while (i >= Xrand)
+
+
+				}
+
+				Xrand = rand() % 500;
+				Xmotion(Xrand);
+
+			}
 
 
 
