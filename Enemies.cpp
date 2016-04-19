@@ -18,8 +18,8 @@ Enemy *newEnemy(float x, float y)
 	{
 		lastEnemy->next = new Enemy; // pointing to the new node which is not known yet.
 		lastEnemy->next->previous = lastEnemy; // this might be confusing here but it's just the unknown bullet node
-												 // pointing to the previous bullet which is currently "LastBullet" and
-												 // in the next step we will shift it to the end of the list again
+						       // pointing to the previous bullet which is currently "LastBullet" and
+						       // in the next step we will shift it to the end of the list again
 
 		lastEnemy = lastEnemy->next;           // shifting to the end of the list
 		lastEnemy->next = NULL;                 // making next pointing to nothing again. 
@@ -123,35 +123,22 @@ void Xmotion(int Xrand, bool j, int i)
 
 			while (j = false)
 			{
-			
-
 				if (i < Xrand)
 				{
 					do
 					{
 						i += .5;
-
-
-
 					} while (i <= Xrand);
-
 				}
-
 				else
 				{
 					do {
 						i -= .5;
-
-
 					} while (i >= Xrand);
-
-
 				}
-
 				Xrand = rand() % 500;
-				//Xmotion(Xrand); //produces endless loop
-
-			}
+				// I got rid of Xmotion() since you said it produces endless loops and nice catch by the way.
+			}	// and I cleaned up the spaces in the function so it looks more readable. 
 }
 
 
