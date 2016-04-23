@@ -1,4 +1,5 @@
 #include "BattleStage.h"
+#include "LevelComplete.h"
 #include "Button.h"
 #include "player.h"
 #include "Bullet.h"
@@ -17,6 +18,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 	sf::RectangleShape rightSq = sf::RectangleShape(sf::Vector2f(50,50));
 	sf::RectangleShape zSq = sf::RectangleShape(sf::Vector2f(50,50));
 	sf::RectangleShape xSq = sf::RectangleShape(sf::Vector2f(50,50));
+	sf::RectangleShape scoreBar = sf::RectangleShape(sf::Vector2f(300,15));
 	//display colors
 	upSq.setFillColor(sf::Color::Green);
 	downSq.setFillColor(sf::Color::Green);
@@ -31,10 +33,14 @@ void BattleStage::open(sf::RenderWindow* window) {
 	rightSq.setPosition(100,550);
 	zSq.setPosition(0,500);
 	xSq.setPosition(100,500);
+	scoreBar.setPosition(0,585);
 	//list drawables
 	drawables = std::list<sf::Drawable*>();
 	drawables.push_front(exitB.getShape());
 	drawables.push_front(p1.getSprite());
+	drawables.push_front(&scoreBar);
+
+	score = 300;
 
 	//bulk loop
 	while (!done) {
@@ -73,11 +79,13 @@ void BattleStage::open(sf::RenderWindow* window) {
                     drawables.push_back(&zSq);
                     newbullet(p1.getX(),p1.getY());
                     newbullet(p1.getX()+35,p1.getY());
+                    score += 10;
                 }
 				if (event.key.code == sf::Keyboard::X) {
 					drawables.push_back(&xSq);
 					//temporary for enemy testing:
 					newEnemy(rand()%460,0);
+					score -= 10;
 				}
 			}
 			if (event.type == sf::Event::KeyReleased) {
@@ -101,6 +109,18 @@ void BattleStage::open(sf::RenderWindow* window) {
 				if (event.key.code == sf::Keyboard::X) drawables.remove(&xSq);
 			}
 		}
+
+		//update scoreBar
+		scoreBar.setSize(sf::Vector2f(score/2 , 15));
+		scoreBar.setFillColor(sf::Color(255 - score*255/1000,score*255/1000,20,255));
+
+        //check win/lose conditions
+        if (score >= 1000 || score <= 0) {
+            DeleteAllBullets();
+            DeleteAllEnemys();
+            LevelComplete().open(window);
+            return;
+        }
 
 		//draw sequence
 		window->clear();

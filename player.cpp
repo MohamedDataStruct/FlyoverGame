@@ -97,8 +97,3 @@ int player::getXVel() { return yVel; }
 
 int player::getYVel() { return xVel; }
 
-
-
-
-
-

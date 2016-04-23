@@ -34,8 +34,6 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 					DeleteAllBullets();
 					BattleStage temp = BattleStage();
 					temp.open(window);
-					LevelComplete comp = LevelComplete();
-					comp.open(window);
 				}
 			}
 			//window closed

@@ -27,3 +27,5 @@ public:
 	sf::Sprite* getSprite();
 };
 
+//there might by a better place for this later, but this should do:
+static int score;
