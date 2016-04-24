@@ -8,6 +8,8 @@ struct Enemy
 	float x;
 	float y;
 	bool dead; // a variable that is when set to true it kills the node.
+	sf::Texture text;
+	sf::Sprite look;
 	Enemy *next;
 	Enemy *previous;
 };

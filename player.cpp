@@ -15,7 +15,7 @@ player::player()
 		score = 0;
 
 		texture = sf::Texture();
-		texture.loadFromFile("Sprites/player.png");
+		texture.loadFromFile("Sprites/speedship.png");
 		sprite = sf::Sprite();
 		sprite.setTexture(texture);
 }
@@ -84,9 +84,9 @@ void player::setVelocity(int xV, int yV)
 		x += xVel;
 		y += yVel;
 		//keep it from flying off screen
-		if (x > 460) x = 460;
+		if (x > 436) x = 436;
 		if (x < 0) x = 0;
-		if (y > 560) y = 560;
+		if (y > 536) y = 536;
 		if (y < 0) y = 0;
 		sprite.setPosition(x,y);
 		//game over, shooting logic goes here.

@@ -78,7 +78,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 				if (event.key.code == sf::Keyboard::Z) {
                     drawables.push_back(&zSq);
                     newbullet(p1.getX(),p1.getY());
-                    newbullet(p1.getX()+35,p1.getY());
+                    newbullet(p1.getX()+49,p1.getY());
                     score += 10;
                 }
 				if (event.key.code == sf::Keyboard::X) {
