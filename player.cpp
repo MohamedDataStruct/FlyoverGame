@@ -8,8 +8,8 @@ using namespace std;
 player::player()
 {
 		gameOver = false;
-		x = width / 2;
-		y = height / 2;
+		x = 230;
+		y = 500;
 		xVel = 0;
 		yVel = 0;
 		score = 0;
@@ -62,10 +62,10 @@ void player::input(Direction dir) {
 			setVelocity(7,0);
 			break;
 		case UP:
-			setVelocity(0,-10);
+			setVelocity(0,-7);
 			break;
 		case DOWN:
-			setVelocity(0,15);
+			setVelocity(0,7);
 			break;
 		case STOP:
 			setVelocity(0,0);
@@ -83,6 +83,11 @@ void player::setVelocity(int xV, int yV)
 		//move according to current velocity
 		x += xVel;
 		y += yVel;
+		//keep it from flying off screen
+		if (x > 460) x = 460;
+		if (x < 0) x = 0;
+		if (y > 560) y = 560;
+		if (y < 0) y = 0;
 		sprite.setPosition(x,y);
 		//game over, shooting logic goes here.
 	}
