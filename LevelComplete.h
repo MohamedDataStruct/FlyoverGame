@@ -7,6 +7,7 @@
 class LevelComplete {
 	Button continueButton;
 	sf::Text message;
+	sf::Text scoreDisplay;
 	sf::Font font;
 	std::list<sf::Drawable*> drawables;
 	int anim;

@@ -1,4 +1,6 @@
 #include "LevelComplete.h"
+#include "player.h"
+#include <sstream>
 #include <math.h>
 
 LevelComplete::LevelComplete() {
@@ -8,6 +10,11 @@ LevelComplete::LevelComplete() {
 	message.setString("LEVEL COMPLETE");
 	message.setCharacterSize(50);
 	message.setColor(sf::Color::Cyan);
+
+	scoreDisplay = sf::Text();
+	scoreDisplay.setString("");
+	scoreDisplay.setCharacterSize(50);
+	message.setColor(sf::Color::White);
 
 	drawables = std::list<sf::Drawable*>();
 	//drawables.push_front(message);
@@ -43,6 +50,10 @@ void LevelComplete::open(sf::RenderWindow* window) {
         message.setPosition(window->getView().getSize().x/2 - (message.getLocalBounds().width/2)
                             +((x < 0) ? 50.0*sin(x/4.0) : 0),
                             10);
+        scoreDisplay.setString(anim - 60 < score) ? anim - 60: score);
+        scoreDisplay.setPosition(window->getView().getSize().x/2 - (scoreDisplay.getLocalBounds().width/2),
+                            200);
+
         anim++;
 
 		//draw sequence
