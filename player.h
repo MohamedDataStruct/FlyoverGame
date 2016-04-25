@@ -7,11 +7,13 @@ private:
 
 	static const int width = 40;
 	static const int height = 40;
-	int x, y, xVel, yVel, score;
+	int x, y, xVel, yVel;
 	sf::Sprite sprite;
 	sf::Texture texture;
 public:
 	enum Direction { STOP = 0, LEFT, RIGHT, UP, DOWN };
+	int score;
+
 	bool gameOver;
 	player();
 	void Draw();
@@ -26,6 +28,3 @@ public:
 
 	sf::Sprite* getSprite();
 };
-
-//there might by a better place for this later, but this should do:
-static int score;

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 #include "Button.h"
+#include "player.h"
 
 class LevelComplete {
 	Button continueButton;
@@ -13,7 +14,7 @@ class LevelComplete {
 	int anim;
 public:
     LevelComplete();
-	void open(sf::RenderWindow*);
+	void open(sf::RenderWindow*, player);
 
 };
 

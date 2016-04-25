@@ -49,7 +49,7 @@ void BulletLogic()
 
 	while (currentBullet != NULL)
 	{
-		currentBullet->y -= 5; // by the way, you can change the speed of the bullet by changing this number to something bigger.
+		currentBullet->y -= 20; // by the way, you can change the speed of the bullet by changing this number to something bigger.
         currentBullet->sprite.setPosition(currentBullet->x,currentBullet->y);
 
 		if (currentBullet->y < 0)			// killing the bullet if it goes out the screen.

@@ -21,6 +21,7 @@ MainMenu::MainMenu() { //initializes main menu screen
 }
 
 void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goes here
+
 	//prepare font
 	if (!titleFont.loadFromFile("arial.ttf")) return; //the game will not start if the font doesn't load
 	if (!labelFont.loadFromFile("arial.ttf")) return;

@@ -40,7 +40,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 	drawables.push_front(p1.getSprite());
 	drawables.push_front(&scoreBar);
 
-	score = 300;
+	p1.score = 300;
 
 	//bulk loop
 	while (!done) {
@@ -79,13 +79,13 @@ void BattleStage::open(sf::RenderWindow* window) {
                     drawables.push_back(&zSq);
                     newbullet(p1.getX(),p1.getY());
                     newbullet(p1.getX()+49,p1.getY());
-                    score += 10;
+                    p1.score += 10;
                 }
 				if (event.key.code == sf::Keyboard::X) {
 					drawables.push_back(&xSq);
 					//temporary for enemy testing:
 					newEnemy(rand()%460,0);
-					score -= 10;
+					p1.score -= 10;
 				}
 			}
 			if (event.type == sf::Event::KeyReleased) {
@@ -111,14 +111,14 @@ void BattleStage::open(sf::RenderWindow* window) {
 		}
 
 		//update scoreBar
-		scoreBar.setSize(sf::Vector2f(score/2 , 15));
-		scoreBar.setFillColor(sf::Color(255 - score*255/1000,score*255/1000,20,255));
+		scoreBar.setSize(sf::Vector2f(p1.score/2 , 15));
+		scoreBar.setFillColor(sf::Color(255 - p1.score*255/1000,p1.score*255/1000,20,255));
 
         //check win/lose conditions
-        if (score >= 1000 || score <= 0) {
+        if (p1.score >= 1000 || p1.score <= 0) {
             DeleteAllBullets();
             DeleteAllEnemys();
-            LevelComplete().open(window);
+            LevelComplete().open(window,p1);
             return;
         }
 
