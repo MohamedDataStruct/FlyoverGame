@@ -1,5 +1,7 @@
 #include "Enemies.h"
 #include <SFML/Graphics.hpp>
+#include "Bullet.h"
+
 
 Enemy *firstEnemy = NULL;
 Enemy *lastEnemy = NULL;
@@ -97,6 +99,18 @@ void RenderAndDeleteEnemy(sf::RenderWindow* window)
 
 			currentEnemy = currentEnemy->next; // so we won't stay in the loop forever.
 		}
+		
+		// ******************* this is assuming that the enemy is 64X64 *********************
+		
+		/* if (currentBullet->x >= currentEnemy->x && currentBullet->x <= currentEnemy->x + 64)
+		{
+			if (currentBullet->y >= currentEnemy->y && currentBullet->y <= currentEnemy->y + 64)
+				{
+					currentEnemy->dead = true;	
+					currentBullet->dead = true;
+					score += 50; //or what ever you want it to be
+				}
+		}*/
 	}
 }
 
