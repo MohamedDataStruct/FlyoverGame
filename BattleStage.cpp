@@ -12,27 +12,27 @@ void BattleStage::open(sf::RenderWindow* window) {
 
 	player p1 = player();
 	// keyboard display parts
-	sf::RectangleShape upSq = sf::RectangleShape(sf::Vector2f(50,50));
-	sf::RectangleShape downSq = sf::RectangleShape(sf::Vector2f(50,50));
-	sf::RectangleShape leftSq = sf::RectangleShape(sf::Vector2f(50,50));
-	sf::RectangleShape rightSq = sf::RectangleShape(sf::Vector2f(50,50));
-	sf::RectangleShape zSq = sf::RectangleShape(sf::Vector2f(50,50));
-	sf::RectangleShape xSq = sf::RectangleShape(sf::Vector2f(50,50));
+	//sf::RectangleShape upSq = sf::RectangleShape(sf::Vector2f(50,50));
+	//sf::RectangleShape downSq = sf::RectangleShape(sf::Vector2f(50,50));
+	//sf::RectangleShape leftSq = sf::RectangleShape(sf::Vector2f(50,50));
+	//sf::RectangleShape rightSq = sf::RectangleShape(sf::Vector2f(50,50));
+	//sf::RectangleShape zSq = sf::RectangleShape(sf::Vector2f(50,50));
+	//sf::RectangleShape xSq = sf::RectangleShape(sf::Vector2f(50,50));
 	sf::RectangleShape scoreBar = sf::RectangleShape(sf::Vector2f(300,15));
 	//display colors
-	upSq.setFillColor(sf::Color::Green);
-	downSq.setFillColor(sf::Color::Green);
-	leftSq.setFillColor(sf::Color::Green);
-	rightSq.setFillColor(sf::Color::Green);
-	zSq.setFillColor(sf::Color::Red);
-	xSq.setFillColor(sf::Color::Cyan);
+	//upSq.setFillColor(sf::Color::Green);
+	//downSq.setFillColor(sf::Color::Green);
+	//leftSq.setFillColor(sf::Color::Green);
+	//rightSq.setFillColor(sf::Color::Green);
+	//zSq.setFillColor(sf::Color::Red);
+	//xSq.setFillColor(sf::Color::Cyan);
 	//display positons
-	upSq.setPosition(50,500);
-	downSq.setPosition(50,550);
-	leftSq.setPosition(0,550);
-	rightSq.setPosition(100,550);
-	zSq.setPosition(0,500);
-	xSq.setPosition(100,500);
+	//upSq.setPosition(50,500);
+	//downSq.setPosition(50,550);
+	//leftSq.setPosition(0,550);
+	//rightSq.setPosition(100,550);
+	//zSq.setPosition(0,500);
+	//xSq.setPosition(100,500);
 	scoreBar.setPosition(0,585);
 	//list drawables
 	drawables = std::list<sf::Drawable*>();
@@ -60,29 +60,29 @@ void BattleStage::open(sf::RenderWindow* window) {
 			}
 			if (event.type == sf::Event::KeyPressed) {
 				if (event.key.code == sf::Keyboard::Up) {
-					drawables.push_back(&upSq);
+					//drawables.push_back(&upSq);
 					p1.input(player::UP);
 				}
 				if (event.key.code == sf::Keyboard::Down) {
-					drawables.push_back(&downSq);
+					//drawables.push_back(&downSq);
 					p1.input(player::DOWN);
 				}
 				if (event.key.code == sf::Keyboard::Left) {
-					drawables.push_back(&leftSq);
+					//drawables.push_back(&leftSq);
 					p1.input(player::LEFT);
 				}
 				if (event.key.code == sf::Keyboard::Right) {
-					drawables.push_back(&rightSq);
+					//drawables.push_back(&rightSq);
 					p1.input(player::RIGHT);
 				}
 				if (event.key.code == sf::Keyboard::Z) {
-                    drawables.push_back(&zSq);
+                    //drawables.push_back(&zSq);
                     newbullet(p1.getX(),p1.getY());
                     newbullet(p1.getX()+49,p1.getY());
                     p1.score += 10;
                 }
 				if (event.key.code == sf::Keyboard::X) {
-					drawables.push_back(&xSq);
+					//drawables.push_back(&xSq);
 					//temporary for enemy testing:
 					newEnemy(rand()%460,0);
 					p1.score -= 10;
@@ -90,23 +90,23 @@ void BattleStage::open(sf::RenderWindow* window) {
 			}
 			if (event.type == sf::Event::KeyReleased) {
 				if (event.key.code == sf::Keyboard::Up) {
-					drawables.remove(&upSq);
+					//drawables.remove(&upSq);
 					p1.input(player::STOP);
 				}
 				if (event.key.code == sf::Keyboard::Down) {
-					drawables.remove(&downSq);
+					//drawables.remove(&downSq);
 					p1.input(player::STOP);
 				}
 				if (event.key.code == sf::Keyboard::Left) {
-					drawables.remove(&leftSq);
+					//drawables.remove(&leftSq);
 					p1.input(player::STOP);
 				}
 				if (event.key.code == sf::Keyboard::Right) {
-					drawables.remove(&rightSq);
+					//drawables.remove(&rightSq);
 					p1.input(player::STOP);
 				}
-				if (event.key.code == sf::Keyboard::Z) drawables.remove(&zSq);
-				if (event.key.code == sf::Keyboard::X) drawables.remove(&xSq);
+				if (event.key.code == sf::Keyboard::Z); //drawables.remove(&zSq);
+				if (event.key.code == sf::Keyboard::X); //drawables.remove(&xSq);
 			}
 		}
 
