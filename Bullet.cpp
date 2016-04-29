@@ -1,6 +1,7 @@
 #include<iostream>
 #include <SFML/Graphics.hpp>
 #include "Bullet.h"
+#include "Enemies.h"
 
 using namespace std;
 
@@ -54,6 +55,8 @@ void BulletLogic()
 
 		if (currentBullet->y < 0)			// killing the bullet if it goes out the screen.
 			currentBullet->dead = true;
+			
+		//if ()
 
 		currentBullet = currentBullet->next; // moving to the next node.
 	}
