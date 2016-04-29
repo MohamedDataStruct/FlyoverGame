@@ -5,7 +5,7 @@
 #include "Bullet.h"
 #include "Enemies.h"
 
-void BattleStage::open(sf::RenderWindow* window) {
+bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	//prepare level
 	bool done = false;
 	Button exitB = Button(0,0,50,50,sf::Color(64,64,64,255));
@@ -40,7 +40,11 @@ void BattleStage::open(sf::RenderWindow* window) {
 	drawables.push_front(p1.getSprite());
 	drawables.push_front(&scoreBar);
 
+    //set up level
 	p1.score = 300;
+	int enemiesLeft = 5 + 5*difficulty;
+	int enemyRate = (difficulty > 14) ? 5 : 75 - 5*difficulty;
+	int enemyTimer = 1;
 
 	//bulk loop
 	while (!done) {
@@ -50,9 +54,9 @@ void BattleStage::open(sf::RenderWindow* window) {
 
 		sf::Event event;
 		while(window->pollEvent(event)) {
-			if (event.type == sf::Event::Closed) {
+			if (event.type == sf::Event::Closed) {//check for closed window
 				done = true;
-				window->close(); //check for closed window
+				window->close();
 			}
 			if (event.type == sf::Event::MouseButtonPressed) { //if the exit button is clicked, prepare to back out of screen
 				if (event.mouseButton.button == sf::Mouse::Left &&
@@ -84,7 +88,7 @@ void BattleStage::open(sf::RenderWindow* window) {
 				if (event.key.code == sf::Keyboard::X) {
 					//drawables.push_back(&xSq);
 					//temporary for enemy testing:
-					newEnemy(rand()%460,0);
+					//newEnemy(rand()%460,0);
 					p1.score -= 10;
 				}
 			}
@@ -110,16 +114,23 @@ void BattleStage::open(sf::RenderWindow* window) {
 			}
 		}
 
+		//enemy deployment
+		enemyTimer = (enemyTimer + 1) % enemyRate;
+		if (!enemyTimer) newEnemy(rand()%415,0), enemiesLeft--;
+
 		//update scoreBar
 		scoreBar.setSize(sf::Vector2f(p1.score/2 , 15));
 		scoreBar.setFillColor(sf::Color(255 - p1.score*255/1000,p1.score*255/1000,20,255));
 
         //check win/lose conditions
-        if (p1.score >= 1000 || p1.score <= 0) {
+        if (p1.score >= 1000 || enemiesLeft == 0) {
             DeleteAllBullets();
             DeleteAllEnemys();
             LevelComplete().open(window,p1);
-            return;
+            return (p1.score >= 1000);
+        }
+        if (p1.score <= 0) {//game over
+            p1.score = 0; //temporary filler untill GameOver is implemented
         }
 
 		//draw sequence
@@ -131,4 +142,5 @@ void BattleStage::open(sf::RenderWindow* window) {
 		window->display();
 	}
 	DeleteAllBullets();
+	return true;
 }

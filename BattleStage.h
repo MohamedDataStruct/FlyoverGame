@@ -8,7 +8,7 @@ class BattleStage {
 	//some member needed to store obstacles and enemies
 	std::list<sf::Drawable*> drawables;
 public:
-	void open(sf::RenderWindow*);
+	bool open(sf::RenderWindow*,int);
 };
 
 #endif

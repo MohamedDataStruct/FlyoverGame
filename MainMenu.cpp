@@ -43,7 +43,8 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 				//check buttons
 				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple test level button
 					DeleteAllBullets();
-					BattleStage().open(window);
+					int diff = 1;
+					while(!BattleStage().open(window,diff)) diff++;
 				}
 			}
 			//window closed
