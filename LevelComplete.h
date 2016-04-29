@@ -14,7 +14,7 @@ class LevelComplete {
 	int anim;
 public:
     LevelComplete();
-	void open(sf::RenderWindow*, player);
+	void open(sf::RenderWindow*, int);
 
 };
 

@@ -3,6 +3,7 @@
 #include "BattleStage.h"
 #include "LevelComplete.h"
 #include "Bullet.h"
+#include "player.h"
 #include <iostream>
 
 MainMenu::MainMenu() { //initializes main menu screen
@@ -34,6 +35,7 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
                             175 - playLabel.getGlobalBounds().height);
 	title.setPosition(window->getView().getSize().x/2 - (title.getLocalBounds().width/2), 10);
 
+    p1 = player();
 	while (window->isOpen()) //function loop
     {
         sf::Event event;
@@ -44,6 +46,7 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 				if (testButton.pointOnBox(event.mouseButton.x, event.mouseButton.y)) { //simple test level button
 					DeleteAllBullets();
 					int diff = 1;
+                    p1.score = 300;
 					while(!BattleStage().open(window,diff)) diff++;
 				}
 			}

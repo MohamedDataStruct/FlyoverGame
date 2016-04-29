@@ -24,7 +24,7 @@ LevelComplete::LevelComplete() {
 	anim = 0;
 }
 
-void LevelComplete::open(sf::RenderWindow* window, player p1) {
+void LevelComplete::open(sf::RenderWindow* window, int score) {
     font.loadFromFile("arial.ttf");
     message.setFont(font);
 	scoreDisplay.setFont(font);
@@ -57,7 +57,7 @@ void LevelComplete::open(sf::RenderWindow* window, player p1) {
                             10);
         display.clear();
         display.str("");
-        display << ((2*anim - 120 < p1.score) ? 2*anim - 120: p1.score);
+        display << ((2*anim - 120 < score) ? 2*anim - 120: score);
         scoreDisplay.setString(display.str());
         scoreDisplay.setPosition(window->getView().getSize().x/2 - (scoreDisplay.getLocalBounds().width/2),
 					              200);

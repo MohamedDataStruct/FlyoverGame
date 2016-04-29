@@ -10,7 +10,6 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	bool done = false;
 	Button exitB = Button(0,0,50,50,sf::Color(64,64,64,255));
 
-	player p1 = player();
 	// keyboard display parts
 	//sf::RectangleShape upSq = sf::RectangleShape(sf::Vector2f(50,50));
 	//sf::RectangleShape downSq = sf::RectangleShape(sf::Vector2f(50,50));
@@ -41,10 +40,10 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	drawables.push_front(&scoreBar);
 
     //set up level
-	p1.score = 300;
 	int enemiesLeft = 5 + 5*difficulty;
 	int enemyRate = (difficulty > 14) ? 5 : 75 - 5*difficulty;
 	int enemyTimer = 1;
+	if (difficulty == 1) p1.score = 300;
 
 	//bulk loop
 	while (!done) {
@@ -116,7 +115,7 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 
 		//enemy deployment
 		enemyTimer = (enemyTimer + 1) % enemyRate;
-		if (!enemyTimer) newEnemy(rand()%415,0), enemiesLeft--;
+		if (!enemyTimer) newEnemy(rand()%415,-90), enemiesLeft--;
 
 		//update scoreBar
 		scoreBar.setSize(sf::Vector2f(p1.score/2 , 15));
@@ -126,7 +125,7 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
         if (p1.score >= 1000 || enemiesLeft == 0) {
             DeleteAllBullets();
             DeleteAllEnemys();
-            LevelComplete().open(window,p1);
+            LevelComplete().open(window, p1.score);
             return (p1.score >= 1000);
         }
         if (p1.score <= 0) {//game over

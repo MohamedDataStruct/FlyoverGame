@@ -28,3 +28,5 @@ public:
 
 	sf::Sprite* getSprite();
 };
+
+static player p1;
