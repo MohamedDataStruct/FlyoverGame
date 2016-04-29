@@ -28,6 +28,7 @@ void LevelComplete::open(sf::RenderWindow* window, player p1) {
     font.loadFromFile("arial.ttf");
     message.setFont(font);
 	scoreDisplay.setFont(font);
+	std::ostringstream display;
 
 	continueButton = Button(window->getView().getSize().x/2 - 50,150,100,50,sf::Color::Red);
 	message.setPosition(window->getView().getSize().x/2 - (message.getLocalBounds().width/2), 10);
@@ -54,7 +55,10 @@ void LevelComplete::open(sf::RenderWindow* window, player p1) {
         message.setPosition(window->getView().getSize().x/2 - (message.getLocalBounds().width/2)
                             +((x < 0) ? 50.0*sin(x/4.0) : 0),
                             10);
-        scoreDisplay.setString(std::to_string((double long)((2*anim - 120 < p1.score) ? 2*anim - 120: p1.score)));
+        display.clear();
+        display.str("");
+        display << ((2*anim - 120 < p1.score) ? 2*anim - 120: p1.score);
+        scoreDisplay.setString(display.str());
         scoreDisplay.setPosition(window->getView().getSize().x/2 - (scoreDisplay.getLocalBounds().width/2),
 					              200);
 
