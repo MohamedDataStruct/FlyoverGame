@@ -100,17 +100,7 @@ void RenderAndDeleteEnemy(sf::RenderWindow* window)
 			currentEnemy = currentEnemy->next; // so we won't stay in the loop forever.
 		}
 		
-		// ******************* this is assuming that the enemy is 64X64 *********************
-		
-		/* if (currentBullet->x >= currentEnemy->x && currentBullet->x <= currentEnemy->x + 64)
-		{
-			if (currentBullet->y >= currentEnemy->y && currentBullet->y <= currentEnemy->y + 64)
-				{
-					currentEnemy->dead = true;	
-					currentBullet->dead = true;
-					score += 50; //or what ever you want it to be
-				}
-		}*/
+
 	}
 }
 
@@ -157,7 +147,37 @@ void Xmotion(int Xrand, bool j, int i)
 			}	// and I cleaned up the spaces in the function so it looks more readable.
 }
 
+		// ******************* this is assuming that the enemy is 64X64 *********************
+		
+		/* if (currentBullet->x >= currentEnemy->x && currentBullet->x <= currentEnemy->x + 64)
+		{
+			if (currentBullet->y >= currentEnemy->y && currentBullet->y <= currentEnemy->y + 64)
+				{
+					currentEnemy->dead = true;	
+					currentBullet->dead = true;
+					score += 50; //or what ever you want it to be
+				}
+		}*/
 
+bool EnemyHit(int x, int y)
+{
+	Enemy *currentEnemy = firstEnemy;
+	while (currentEnemy != NULL)
+	{
+	if (x >= 0 && x <= 85)
+	{
+		if (y >= 0 && y <= 85)
+		{
+		currentEnemy->dead = true;	
+		return true;
+		}
+		
+	}
+	currentEnemy = currentEnemy->next;
+	}
+	
+	
+}
 
 
 
