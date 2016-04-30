@@ -5,7 +5,7 @@
 
 Enemy *firstEnemy = NULL;
 Enemy *lastEnemy = NULL;
-
+sf::Texture enemyTexture = sf::Texture();
 
 Enemy *newEnemy(float x, float y)
 {
@@ -15,6 +15,7 @@ Enemy *newEnemy(float x, float y)
 		lastEnemy = firstEnemy; // head and tail point to the same node since it's the only one for now.
 		lastEnemy->next = NULL;
 		lastEnemy->previous = NULL;
+		enemyTexture.loadFromFile("Sprites/medspeedster.png");
 	}
 	else
 	{
@@ -30,9 +31,10 @@ Enemy *newEnemy(float x, float y)
 	lastEnemy->x = x; // making x data portion of struct equal to the parameter.
 	lastEnemy->y = y; // same goes for y
 	lastEnemy->look = sf::Sprite();
-	lastEnemy->text = sf::Texture();
-	lastEnemy->text.loadFromFile("Sprites/medspeedster.png");
-	lastEnemy->look.setTexture(lastEnemy->text);
+	lastEnemy->look.setTexture(enemyTexture);
+	//lastEnemy->text = sf::Texture();
+	//lastEnemy->text.loadFromFile("Sprites/medspeedster.png");
+	//lastEnemy->look.setTexture(lastEnemy->text);
 
 	lastEnemy->dead = false; // we set it to true only when we want the bullet destroyed.
 
@@ -99,7 +101,7 @@ void RenderAndDeleteEnemy(sf::RenderWindow* window)
 
 			currentEnemy = currentEnemy->next; // so we won't stay in the loop forever.
 		}
-		
+
 
 	}
 }
@@ -148,12 +150,12 @@ void Xmotion(int Xrand, bool j, int i)
 }
 
 		// ******************* this is assuming that the enemy is 64X64 *********************
-		
+
 		/* if (currentBullet->x >= currentEnemy->x && currentBullet->x <= currentEnemy->x + 64)
 		{
 			if (currentBullet->y >= currentEnemy->y && currentBullet->y <= currentEnemy->y + 64)
 				{
-					currentEnemy->dead = true;	
+					currentEnemy->dead = true;
 					currentBullet->dead = true;
 					score += 50; //or what ever you want it to be
 				}
@@ -168,15 +170,15 @@ bool EnemyHit(int x, int y)
 	{
 		if (y >= 0 && y <= 85)
 		{
-		currentEnemy->dead = true;	
+		currentEnemy->dead = true;
 		return true;
 		}
-		
+
 	}
 	currentEnemy = currentEnemy->next;
 	}
-	
-	
+
+
 }
 
 
