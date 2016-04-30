@@ -175,6 +175,7 @@ bool EnemyHit(int x, int y)
 		}
 
 	}
+	else{return false;}
 	currentEnemy = currentEnemy->next;
 	}
 

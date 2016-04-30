@@ -52,9 +52,15 @@ void BulletLogic()
 	{
 		currentBullet->y -= 20; // by the way, you can change the speed of the bullet by changing this number to something bigger.
         currentBullet->sprite.setPosition(currentBullet->x,currentBullet->y);
-
-		if (currentBullet->y < 0)			// killing the bullet if it goes out the screen.
-			currentBullet->dead = true;
+		
+		if (HitEnemy(currentBullet->x, currentBullet->y) == true) 
+		{ currentBullet->dead = true; 
+		
+		  //*********************** HERE ENTER YOUR SCORE CODE MOSE ************************		
+		}
+		
+	 	else {if (currentBullet->y < 0)			// killing the bullet if it goes out the screen.
+			currentBullet->dead = true;}
 			
 		//if ()
 
