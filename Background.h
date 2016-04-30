@@ -17,6 +17,7 @@ private:
         sf::RectangleShape look;
     };
     std::list<particle> particleList;
+    sf::RectangleShape backdrop;
 public:
     Background();
     void setIntensity(int);

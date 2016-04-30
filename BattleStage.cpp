@@ -4,6 +4,7 @@
 #include "player.h"
 #include "Bullet.h"
 #include "Enemies.h"
+#include "Background.h"
 
 bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	//prepare level
@@ -45,11 +46,17 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	int enemyTimer = 1;
 	if (difficulty == 1) p1.score = 300;
 
+	Background bg = Background();
+	bg.setGroundColor(sf::Color(0,240,0,255));
+	bg.setParticleColor(sf::Color(0,200,0,255));
+	bg.setIntensity(difficulty);
+
 	//bulk loop
 	while (!done) {
 		p1.logic();
 		BulletLogic();
 		EnemyLogic();
+		bg.logic();
 
 		sf::Event event;
 		while(window->pollEvent(event)) {
@@ -134,6 +141,7 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 
 		//draw sequence
 		window->clear();
+		bg.render(window);
 		for (std::list<sf::Drawable*>::iterator it = drawables.begin(); it != drawables.end(); it++)
 			window->draw(**it);
         RenderAndDeleteBullet(window);
