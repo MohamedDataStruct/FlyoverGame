@@ -25,3 +25,5 @@ void RenderAndDeleteEnemy(sf::RenderWindow*);
 void DeleteAllEnemys();
 
 bool EnemyHit(int x, int y);
+
+bool PlayerCollision(int x1, int x2, int y);
