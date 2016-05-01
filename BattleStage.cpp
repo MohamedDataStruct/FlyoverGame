@@ -54,7 +54,7 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	//bulk loop
 	while (!done) {
 		p1.logic();
-		BulletLogic();
+		p1.score += BulletLogic();
 		EnemyLogic();
 		bg.logic();
 
@@ -89,13 +89,13 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
                     //drawables.push_back(&zSq);
                     newbullet(p1.getX(),p1.getY());
                     newbullet(p1.getX()+49,p1.getY());
-                    p1.score += 10;
+                    //p1.score += 10;
                 }
 				if (event.key.code == sf::Keyboard::X) {
 					//drawables.push_back(&xSq);
 					//temporary for enemy testing:
 					//newEnemy(rand()%460,0);
-					p1.score -= 10;
+					//p1.score -= 10;
 				}
 			}
 			if (event.type == sf::Event::KeyReleased) {
@@ -133,6 +133,7 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
             DeleteAllBullets();
             DeleteAllEnemys();
             LevelComplete().open(window, p1.score);
+            p1.input(player::STOP);
             return (p1.score >= 1000);
         }
         if (p1.score <= 0) {//game over

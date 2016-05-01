@@ -44,8 +44,9 @@ Bullet* newbullet(float x, float y)
 
 }
 
-void BulletLogic()
+int BulletLogic()
 {
+    int scoreAdd = 0;
 	Bullet *currentBullet = firstBullet; // this is a traversing pointer initialized to the first node and it moves through the list.
 
 	while (currentBullet != NULL)
@@ -56,7 +57,7 @@ void BulletLogic()
 		if (EnemyHit(currentBullet->x, currentBullet->y) == true)
 		{ currentBullet->dead = true;
 
-		  //*********************** HERE ENTER YOUR SCORE CODE MOSE ************************
+		  scoreAdd = 20;
 		}
 
 	 	else {if (currentBullet->y < 0)			// killing the bullet if it goes out the screen.
@@ -66,6 +67,7 @@ void BulletLogic()
 
 		currentBullet = currentBullet->next; // moving to the next node.
 	}
+	return scoreAdd;
 
 }
 

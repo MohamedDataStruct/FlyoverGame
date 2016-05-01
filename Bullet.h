@@ -14,7 +14,7 @@ struct Bullet
 
 Bullet* newbullet(float x, float y);
 
-void BulletLogic();
+int BulletLogic();
 
 void RenderAndDeleteBullet(sf::RenderWindow*);
 
