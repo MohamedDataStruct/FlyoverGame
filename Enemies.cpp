@@ -166,9 +166,9 @@ bool EnemyHit(int x, int y)
 	Enemy *currentEnemy = firstEnemy;
 	while (currentEnemy != NULL)
 	{
-	if (x >= 0 && x <= 85)
+	if (x >= currentEnemy->x && x <= currentEnemy->x+84)
 	{
-		if (y >= 0 && y <= 85)
+		if (y >= currentEnemy->x && y <= currentEnemy->x+84)
 		{
 		currentEnemy->dead = true;
 		return true;
