@@ -91,8 +91,8 @@ void player::setVelocity(int xV, int yV)
 		if (y < 0) y = 0;
 		sprite.setPosition(x,y);
 		//game over, shooting logic goes here.
-		Enemies s;
-		if (true == s.PlayerCollision(x,x+63,y))
+	
+		if (true == PlayerCollision(x,x+63,y))
 		{
 			gameOver = true;
 			
