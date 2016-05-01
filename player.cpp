@@ -2,6 +2,7 @@
 #include<SFML/System.hpp>
 #include<SFML/Graphics.hpp>
 #include "player.h"
+#include "Enemies.h"
 #pragma once
 using namespace std;
 
