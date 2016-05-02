@@ -176,21 +176,20 @@ bool EnemyHit(int x, int y)
 
 	}
 	currentEnemy = currentEnemy->next;
-	else{return false;}
 	}
 
-
+    return false;
 }
 
 bool PlayerCollision(int x1, int x2, int y)
 {
-	Enemy *currentEnemy = firstEnemy;	
+	Enemy *currentEnemy = firstEnemy;
 	while (currentEnemy != NULL)
 	{
-	
+
 	if (x1 >= currentEnemy->x && x1 <= currentEnemy->x+84)
 	{
-		if (y >= currentEnemy->x && y <= currentEnemy->x+84)
+		if (y >= currentEnemy->y && y <= currentEnemy->y+84)
 		{
 		currentEnemy->dead = true;
 		return true;
@@ -199,15 +198,14 @@ bool PlayerCollision(int x1, int x2, int y)
 	}
 	else if (x2 >= currentEnemy->x && x2 <= currentEnemy->x+84)
 	{
-		if (y >= currentEnemy->x && y <= currentEnemy->x+84)
+		if (y >= currentEnemy->y && y <= currentEnemy->y+84)
 		{
 		currentEnemy->dead = true;
 		return true;
 		}
 	}
 	currentEnemy = currentEnemy->next;
-	else{return false;}
 	}
-	
+	return false;
 }
 
