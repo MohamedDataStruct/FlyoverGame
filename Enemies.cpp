@@ -29,6 +29,7 @@ Enemy *newEnemy(float x, float y)
 	}
 
 	lastEnemy->x = x; // making x data portion of struct equal to the parameter.
+	lastEnemy->xSpeed = rand()%5 - 2;
 	lastEnemy->y = y; // same goes for y
 	lastEnemy->look = sf::Sprite();
 	lastEnemy->look.setTexture(enemyTexture);
@@ -49,6 +50,7 @@ void EnemyLogic()
 	while (currentEnemy != NULL)
 	{
 		currentEnemy->y += 5; // by the way, you can change the speed of the bullet by changing this number to something bigger or smaller.
+		currentEnemy->x += currentEnemy->xSpeed;
 		Xmotion(50,true,currentEnemy->x);
 
 		if (currentEnemy->y > 600)			// killing the bullet if it goes out the screen.

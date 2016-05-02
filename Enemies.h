@@ -6,6 +6,7 @@ using namespace std;
 struct Enemy
 {
 	float x;
+	float xSpeed;
 	float y;
 	bool dead; // a variable that is when set to true it kills the node.
 	sf::Texture text;
