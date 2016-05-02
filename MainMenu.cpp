@@ -4,6 +4,7 @@
 #include "LevelComplete.h"
 #include "Bullet.h"
 #include "player.h"
+#include "Background.h"
 #include <iostream>
 
 MainMenu::MainMenu() { //initializes main menu screen
@@ -35,6 +36,13 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
                             175 - playLabel.getGlobalBounds().height);
 	title.setPosition(window->getView().getSize().x/2 - (title.getLocalBounds().width/2), 10);
 
+	//make background
+	Background bg = Background();
+	bg.setIntensity(1);
+	bg.setGroundColor(sf::Color::Black);
+	bg.setParticleColor(sf::Color::White);
+	for(int i = 0; i < 600; i++) bg.logic();
+
     p1 = player();
 	while (window->isOpen()) //function loop
     {
@@ -54,11 +62,10 @@ void MainMenu::open(sf::RenderWindow* window) { // the bulk of the menu code goe
 			if (event.type == sf::Event::Closed) window->close();
         }
 
-        newbullet(rand()%495,600);
-        BulletLogic();
+        bg.logic();
 		//draw sequence
         window->clear();
-        RenderAndDeleteBullet(window);
+        bg.render(window);
 		window->draw(*testButton.getShape());
 		window->draw(title);
 		window->draw(playLabel);

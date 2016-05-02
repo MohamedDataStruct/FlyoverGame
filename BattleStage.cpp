@@ -36,7 +36,7 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	scoreBar.setPosition(0,585);
 	//list drawables
 	drawables = std::list<sf::Drawable*>();
-	drawables.push_front(exitB.getShape());
+	//drawables.push_front(exitB.getShape());
 	drawables.push_front(p1.getSprite());
 	drawables.push_front(&scoreBar);
 
@@ -47,9 +47,10 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	if (difficulty == 1) p1.score = 300;
 
 	Background bg = Background();
-	bg.setGroundColor(sf::Color(0,240,0,255));
-	bg.setParticleColor(sf::Color(0,200,0,255));
+	bg.setGroundColor(sf::Color(0,200,0,255));
+	bg.setParticleColor(sf::Color(0,240,0,255));
 	bg.setIntensity(difficulty);
+	for(int i = 0; i < 600/difficulty; i++) bg.logic();
 
 	//bulk loop
 	while (!done) {
