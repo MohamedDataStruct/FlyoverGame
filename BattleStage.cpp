@@ -41,8 +41,8 @@ bool BattleStage::open(sf::RenderWindow* window, int difficulty) {
 	drawables.push_front(&scoreBar);
 
     //set up level
-	int enemiesLeft = 5 + 5*difficulty;
-	int enemyRate = (difficulty > 14) ? 5 : 75 - 5*difficulty;
+	int enemiesLeft = 2*(5 + 5*difficulty);
+	int enemyRate = (difficulty > 6) ? 5 : 35 - 5*difficulty;
 	int enemyTimer = 1;
 	if (difficulty == 1) p1.score = 300;
 
