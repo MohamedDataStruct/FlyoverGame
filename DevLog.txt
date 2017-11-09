@@ -1,0 +1,47 @@
+A log file for notes from developers Mose and Mohamed:
+
+March 18 2016 -----------------Mose
+Finaly got all the SFML files in order in the repository.
+We have yet to test officially to see how using github is
+going to work with colaborative coding.
+
+March 18 2016 (PM) ------------Mose
+Developing screens like a main menu and a screen for each
+Level is going to prove more difficult than I had originaly
+thought. Moving from one screen to another can be handled
+either by the window or by the screen itself, but each
+presents a disadvantage. If the window does it, it has
+to poll the screen somehow to find out if it should switch
+and to what it should switch. If the screen handles it,
+there has to be some way for the baton from the window
+to get passed to the next screen...
+
+March 21 2016 -----------------Mose
+I think I found a solution to the screen issue. I settled
+on using the screen as the primary controll for the window
+using a form where each screen runs a finite but lengthly
+loop. Within each loop, the screen may call another screen's
+loop fucntion, effectively passing the baton of the window
+to another stage. In this way, we can also controll what
+menues are available where while simply backing back up
+through menues by terminating their loops:
+
+MainMenu
+ L Select ship
+ L Level Loop
+    L Transition
+    L Level1
+       L PauseScreen
+    L Transition
+    L Level2
+    L Shop
+       L Sell
+       L Buy
+ L Credits
+
+It might be important to make sure there's not a way for
+and indefinite "tunneling" down menus that could result
+in a memory crash, (Eg, using the pause menu to get to
+the main menu as shown above would leave the whole level
+1 sitting in the memory. This can be a problem in LOTS of
+ways.)

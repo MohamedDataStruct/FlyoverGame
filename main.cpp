@@ -1,24 +1,15 @@
 #include <SFML/Graphics.hpp>
+#include "MainMenu.h"
+#include "player.h"
 
 int main()
-{
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+{ //simply create the window and start the main menu
+	sf::RenderWindow window(sf::VideoMode(500, 600), "Flyover Game", sf::Style::Titlebar | sf::Style::Close); //sets window size and atributes (closable, has titlebar)
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+	MainMenu menu = MainMenu();
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+	window.setFramerateLimit(60);
+	menu.open(& window);
 
     return 0;
 }

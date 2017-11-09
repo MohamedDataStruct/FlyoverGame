@@ -1,28 +1,10 @@
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+/Debug
+/ipch
+/SFML-2.3.2/examples
+FlyoverGame.opensdf
+*.cbp
+*.depend
+*.layout
+/bin
+/obj
+*~
